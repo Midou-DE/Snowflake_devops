@@ -54,4 +54,4 @@ jobs:
       - name: Veridy data pipeline
         run: |
           snow sql execute \
-            "@${REPO_NAME}/branches/${BRANCH_NAME}/verify_pipeline.sql"
+           --filename "@${REPO_NAME}/branches/${BRANCH_NAME}/verify_pipeline.sql"
