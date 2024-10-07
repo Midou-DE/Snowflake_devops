@@ -49,7 +49,7 @@ jobs:
             "@${REPO_NAME}/branches/${BRANCH_NAME}/deploy_pipeline.sql" \
             -D "environment='${BRANCH_NAME}'" \
             -D "retention_time=${RETENTION_TIME}"
-          snow git execute \
+          snow sql execute \
             "@${REPO_NAME}/branches/${BRANCH_NAME}/verify_pipeline.sql" \
             -D "environment='${BRANCH_NAME}'" \
             -D "retention_time=${RETENTION_TIME}"
