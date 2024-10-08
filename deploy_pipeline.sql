@@ -6,3 +6,5 @@ execute immediate from 'Colugel/deploy_colugel.sql' using (environment => '{{env
 execute immediate from 'Toolkit/deploy_toolkit.sql' using (environment => '{{environment}}');
 
 execute immediate from 'Security/deploy_security.sql' using (environment => '{{environment}}');
+
+execute immediate from 'Snowflake_DML/deploy_dml.sql' using (environment => '{{environment}}');
