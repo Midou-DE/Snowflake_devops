@@ -28,4 +28,4 @@ AS
   HAVING 
       SUM(CREDITS_USED) > 5;  -- Set the credit threshold for alert
 
-ALTER TASK warehouse_credit_alert_task RESUME;
+CREATE OR ALTER TASK warehouse_credit_alert_task RESUME;
