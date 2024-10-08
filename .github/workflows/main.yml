@@ -46,7 +46,7 @@ jobs:
             RETENTION_TIME=0
           fi
           snow git execute \
-            "@${REPO_NAME}/branches/${BRANCH_NAME}/deploy_pipelinesql" \
+            "@${REPO_NAME}/branches/${BRANCH_NAME}/deploy_pipeline.sql" \
             -D "environment='${BRANCH_NAME}'" \
             -D "retention_time=${RETENTION_TIME}"
 
@@ -60,6 +60,6 @@ jobs:
             RETENTION_TIME=0
           fi
           snow git execute \
-            "@${REPO_NAME}/branches/${BRANCH_NAME}/verify_pipelinesql" \
+            "@${REPO_NAME}/branches/${BRANCH_NAME}/verify_pipeline.sql" \
             -D "environment='${BRANCH_NAME}'" \
             -D "retention_time=${RETENTION_TIME}"
