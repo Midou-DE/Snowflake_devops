@@ -1,0 +1,1 @@
+execute immediate from 'deploy/grant_role_priv_for_eloquant.sql' using (environment => '{{environment}}');
