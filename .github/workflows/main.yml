@@ -34,6 +34,12 @@ jobs:
           pipx install snowflake-cli-labs --include-deps  # Include dependencies
           snow --version  # Check if the installation was successful
 
+      # Test Snowflake CLI connection (optional)
+      - name: Test Snowflake CLI connection
+        run: |
+          source venv/bin/activate
+          snow connection test  # Check if the connection works
+
       # Update Snowflake's copy of the repository
       - name: Fetch repository changes
         run: |
