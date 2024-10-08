@@ -34,6 +34,12 @@ jobs:
 
             # Test Snowflake connection
       - name: Test Snowflake Connection
+        env:
+          REPO_NAME: "quickstart_common.public.quickstart_repo"
+          # Read connection secrets
+          SNOWFLAKE_CONNECTIONS_DEFAULT_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_CONNECTIONS_DEFAULT_USER: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_CONNECTIONS_DEFAULT_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
         run: |
           snow connection test \
             --account="${{ secrets.SNOWFLAKE_ACCOUNT }}" \
