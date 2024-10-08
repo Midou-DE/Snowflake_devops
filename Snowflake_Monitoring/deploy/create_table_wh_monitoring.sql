@@ -30,4 +30,4 @@ AS
   GROUP BY 
       WAREHOUSE_NAME;
 
-CREATE OR ALTER TASK monitor_warehouse_usage RESUME;
+ALTER TASK monitor_warehouse_usage RESUME;
