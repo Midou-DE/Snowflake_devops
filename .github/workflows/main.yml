@@ -27,9 +27,9 @@ jobs:
         uses: actions/checkout@v4
 
       # Install Snowflake CLI GitHub Action and point to config file
-      - uses: Snowflake-Labs/snowflake-cli-action@v1 --include-deps snow
+      - uses: Snowflake-Labs/snowflake-cli-action@v1 
         with:
-          cli-version: "lastest"
+          cli-version: "latest"
           default-config-file-path: "config.toml"
 
       # Update Snowflake's copy of the repository
