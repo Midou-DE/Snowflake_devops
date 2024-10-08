@@ -32,6 +32,18 @@ jobs:
           pipx install snowflake-cli-labs --include-deps  # Include dependencies
           snow --version  # Check if the installation was successful 
 
+            # Test Snowflake connection
+      - name: Test Snowflake Connection
+        run: |
+          snow connection test \
+            --account="${{ secrets.SNOWFLAKE_ACCOUNT }}" \
+            --username="${{ secrets.SNOWFLAKE_USER }}" \
+            --password="${{ secrets.SNOWFLAKE_PASSWORD }}" \
+            --role="ACCOUNTADMIN" \
+            --warehouse="QUICKSTART_WH" \
+            --database="TEST_ADK" \
+            --schema="TEST_ADK"  # Specify if needed
+
       # Update Snowflake's copy of the repository
       - name: Fetch repository changes
         run: snow git fetch "${REPO_NAME}"
