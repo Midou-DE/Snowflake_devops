@@ -1,0 +1,1 @@
+execute immediate from 'verify/create_schema.sql' using (environment => '{{environment}}');

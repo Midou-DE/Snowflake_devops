@@ -1,0 +1,1 @@
+execute immediate from 'deploy/create_schema.sql' using (environment => '{{environment}}');
