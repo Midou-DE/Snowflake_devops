@@ -38,9 +38,6 @@ jobs:
       - name: Fetch repository changes
         run: |
             snow git fetch "${REPO_NAME}" \
-            --account="${{ secrets.SNOWFLAKE_ACCOUNT }}" \
-            --username="${{ secrets.SNOWFLAKE_USER }}" \
-            --password="${{ secrets.SNOWFLAKE_PASSWORD }}" \
             --role="ACCOUNTADMIN" \
             --warehouse="QUICKSTART_WH"
 
