@@ -13,7 +13,7 @@ PACKAGES = ('snowflake-snowpark-python')
 HANDLER = 'grants_privilege_to_role'
 AS
 $$
-def process_json_function(json_input_list):
+def grants_privilege_to_role(json_input_list):
     import json # Convert Snowflake VARIANT to Python dictionary
     import snowflake.snowpark as snowpark
 
