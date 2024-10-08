@@ -26,22 +26,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Snowflake CLI using pipx with dependencies
-        run: |
-          pip install pipx
-          pipx install snowflake-cli-labs --include-deps  # Include dependencies
-          snow --version  # Check if the installation was successful 
-
-            # Test Snowflake connection
-      - name: Test Snowflake Connection
-        env:
-          REPO_NAME: "quickstart_common.public.quickstart_repo"
-          # Read connection secrets
-          SNOWFLAKE_CONNECTIONS_DEFAULT_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-          SNOWFLAKE_CONNECTIONS_DEFAULT_USER: ${{ secrets.SNOWFLAKE_USER }}
-          SNOWFLAKE_CONNECTIONS_DEFAULT_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
-        run: |
-          snow connection test
+      # Install Snowflake CLI GitHub Action and point to config file
+      - uses: Snowflake-Labs/snowflake-cli-action@v1
+        with:
+          cli-version: " 3.0.0"
+          default-config-file-path: "config.toml"
 
       # Update Snowflake's copy of the repository
       - name: Fetch repository changes
