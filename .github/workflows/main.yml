@@ -27,21 +27,16 @@ jobs:
           pipx install snowflake-cli-labs --include-deps  # Include dependencies
           snow --version  # Check if the installation was successful
 
-      # Set Snowflake connection environment variables
-      - name: Set Snowflake connection environment variables
-        env:
-          SNOWFLAKE_CONNECTIONS_DEFAULT_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-          SNOWFLAKE_CONNECTIONS_DEFAULT_USER: ${{ secrets.SNOWFLAKE_USER }}
-          SNOWFLAKE_CONNECTIONS_DEFAULT_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
-          SNOWFLAKE_CONNECTIONS_DEFAULT_ROLE: "ACCOUNTADMIN"         # Optional: Or use secrets
-          SNOWFLAKE_CONNECTIONS_DEFAULT_WAREHOUSE: "QUICKSTART_WH"  # Optional: Or use secrets
-          REPO_NAME: "TEST_ADK.TEST_ADK.quickstart_repo" 
-
       # Test Snowflake CLI connection (optional)
       - name: Test Snowflake CLI connection
         run: |
           source venv/bin/activate
-          snow connection test  # Check if the connection works
+          snow connection test \
+            --account="${{ secrets.SNOWFLAKE_ACCOUNT }}" \
+            --username="${{ secrets.SNOWFLAKE_USER }}" \
+            --password="${{ secrets.SNOWFLAKE_PASSWORD }}" \
+            --role="ACCOUNTADMIN" \
+            --warehouse="QUICKSTART_WH" \
 
       # Update Snowflake's copy of the repository
       - name: Fetch repository changes
