@@ -2,7 +2,7 @@ USE DATABASE TEST_ADK;
 
 USE SCHEMA MONITORING_LMG;
 
-CREATE OR ALTER TABLE warehouse_monitoring (
+CREATE OR ALTER REPLACE warehouse_monitoring (
     warehouse_name STRING,
     total_credits_used NUMBER,
     total_minutes_used NUMBER,
@@ -30,4 +30,7 @@ AS
   GROUP BY 
       WAREHOUSE_NAME;
 
---ALTER TASK monitor_warehouse_usage RESUME;
+ALTER TASK monitor_warehouse_usage RESUME;
+
+-- if we use create or alter we must comment this ALTER TASK warehouse_credit_alert_task RESUME; ins the second deploy
+-- even the first create task
