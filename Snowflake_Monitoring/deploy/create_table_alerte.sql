@@ -3,14 +3,14 @@ USE DATABASE TEST_ADK;
 USE SCHEMA MONITORING_LMG;
 
 
-CREATE OR REPLACE TABLE warehouse_alerts (
+CREATE OR ALTER TABLE warehouse_alerts (
     alert_id INTEGER AUTOINCREMENT,
     warehouse_name STRING,
     alert_message STRING,
     alert_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE OR ALTER TASK warehouse_credit_alert_task
+CREATE OR REPLACE TASK warehouse_credit_alert_task
   WAREHOUSE = QUICKSTART_WH
   SCHEDULE = 'USING CRON 5 * * * * UTC'  -- Run 5 minutes after the usage task
 AS
@@ -28,4 +28,7 @@ AS
   HAVING 
       SUM(CREDITS_USED) > 5;  -- Set the credit threshold for alert
 
---ALTER TASK warehouse_credit_alert_task RESUME;
+ALTER TASK warehouse_credit_alert_task RESUME;
+
+-- if we use create or alter we must comment this ALTER TASK warehouse_credit_alert_task RESUME; ins the second deploy
+-- even the first create task

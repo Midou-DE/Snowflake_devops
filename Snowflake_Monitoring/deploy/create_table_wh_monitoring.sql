@@ -2,7 +2,7 @@ USE DATABASE TEST_ADK;
 
 USE SCHEMA MONITORING_LMG;
 
-CREATE OR ALTER REPLACE warehouse_monitoring (
+CREATE OR ALTER warehouse_monitoring (
     warehouse_name STRING,
     total_credits_used NUMBER,
     total_minutes_used NUMBER,
@@ -11,7 +11,7 @@ CREATE OR ALTER REPLACE warehouse_monitoring (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE OR ALTER TASK monitor_warehouse_usage
+CREATE OR REPLACE TASK monitor_warehouse_usage
   WAREHOUSE = QUICKSTART_WH  -- Specify the warehouse to use for task execution
   SCHEDULE = 'USING CRON 0 * * * * UTC'  -- Run the task every hour
 AS
