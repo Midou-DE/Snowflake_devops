@@ -3,7 +3,7 @@ USE DATABASE TEST_ADK;
 USE SCHEMA MONITORING_LMG;
 
 
-CREATE OR ALTER TABLE warehouse_alerts (
+CREATE OR REPLACE TABLE warehouse_alerts (
     alert_id INTEGER AUTOINCREMENT,
     warehouse_name STRING,
     alert_message STRING,
