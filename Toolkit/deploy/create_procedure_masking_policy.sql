@@ -8,7 +8,8 @@ CREATE OR REPLACE PROCEDURE CREATE_MASKING_POLICYdev(
     tag_name STRING,
     tag_value STRING,
     excluded_role STRING,
-    masked_value STRING
+    masked_value STRING,
+    schame_value STRING
 )
 RETURNS STRING
 LANGUAGE SQL
@@ -16,6 +17,7 @@ EXECUTE AS CALLER
 AS
 $$
 BEGIN
+    EXECUTE IMMEDIATE 'USE SCHEMA '|| schame_value|| ';';
     EXECUTE IMMEDIATE
     'CREATE OR REPLACE MASKING POLICY ' || policy_name || ' AS (VAL ' || column_data_type || ') RETURNS ' || column_data_type || ' ->
     CASE
