@@ -5,7 +5,7 @@ USE SCHEMA MONITORING_LMG;
 CREATE OR ALTER TABLE warehouse_monitoring (
     warehouse_name STRING,
     total_credits_used NUMBER,
-    total_minutes_used NUMBER,
+    --total_minutes_used NUMBER,
     monitoring_period_start TIMESTAMP,
     monitoring_period_end TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
