@@ -2,7 +2,7 @@ USE DATABASE TEST_ADK;
 
 USE SCHEMA MONITORING_LMG;
 
-CREATE OR ALTER warehouse_monitoring (
+CREATE OR ALTER TABLE warehouse_monitoring (
     warehouse_name STRING,
     total_credits_used NUMBER,
     total_minutes_used NUMBER,
